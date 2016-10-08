@@ -1,0 +1,53 @@
+
+/*GLOBAL*/
+b{
+    font-weight: bold;
+}
+
+a{
+    cursor: pointer;
+}
+
+.hide{
+    display: none;
+}
+
+nav{
+    padding: 10px 0;
+    border-bottom: 1px solid #E1E1E1;
+}
+
+nav .nav-right{
+    text-align: right;
+}
+
+nav .nav-right ul.list-menu{
+    list-style-type: none;
+    margin-bottom: 0;
+    margin-top: 5px;
+}
+
+nav .nav-right ul.list-menu li{
+   display: inline !important;
+   padding-right: 15px;
+}
+
+nav .nav-right ul.list-menu li:last-child{
+   padding-right: 0;
+}
+
+nav h4{
+    margin-bottom: 0;
+}
+
+#app{
+     margin-top: 30px;
+}
+
+#welcome i, #Goodbye i{
+    font-size: 100px;
+}
+
+#resultsTable img{
+    width: 50px;
+}
