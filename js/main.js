@@ -1,19 +1,20 @@
-
 init();
 var clientID = "26d997213b38471bbfc418bab493b6a3";
-var url = "https://www.instagram.com/oauth/authorize/?client_id=26d997213b38471bbfc418bab493b6a3&redirect_uri=http://localhost:80/gb&response_type=token&scope=follower_list+relationships";
+var redirect_uri = "http://www.vacom.me/goodbye";
+var url = "https://www.instagram.com/oauth/authorize/?client_id="+clientID+"&redirect_uri="+redirect_uri+"&response_type=token&scope=follower_list+relationships";
 
 function init(){
     if(isAuthenticated()){
         initApp();
     }else{
-       initWelcome();
         if(window.location.hash) {
             var hash = window.location.hash;
             var getToken = hash.split("=");
             console.log(getToken[1]);
             localStorage.setItem("iToken", getToken[1]);
-            
+            window.history.back();
+        }else{
+            initWelcome();             
         }
     }
 }
@@ -25,7 +26,6 @@ function init(){
 //User login to get token acess
 $(document).on("click", "#btlogin", function(){
      var token = window.open(url, "_self");
-     console.log(token);
 });
 
 //User logout remove acess token
@@ -46,9 +46,10 @@ $(document).on("click", ".btUnfollowUser", function(){
                         $("#app").html(emptyTableTemplate());
                     }
             });       
+        }else{
+            swal('Oops...', 'Something went wrong! Try Again', 'error');
         }
 });
-
 
 /*****
  * VERIFICATIONS
@@ -58,13 +59,13 @@ $(document).on("click", ".btUnfollowUser", function(){
 function isAuthenticated(){
     if (typeof(Storage) !== "undefined") {
             token = localStorage.getItem("iToken");
-            if(token == null){
-                return false;
-            }else{
-                return true;
-            }
+                if(token == null){
+                    return false;
+                }else{
+                    return true;
+                }
     } else {
-        // Sorry! No Web Storage support..
+        swal('Oops...', 'Sorry! No Web Storage support...Try another browser', 'error');
     }
 }
 
@@ -76,14 +77,14 @@ function initWelcome(){
     $("#resultsTable").hide();
     $(".list-menu").hide();
     $("#btlogin").show();
-    $("#welcome").show();
+    $("#app").html(welcomeTemplate()); 
 }
 
 function initApp(){
-    getProfile();
-    createList();
     $("#welcome").hide();
     $("#resultsTable").show();
+    getProfile();
+    createList();
 }
 
 /*****
@@ -98,7 +99,7 @@ function createList(){
         for(var i = 0; i < listFollowedBy.length; i++){
              for(var j = 0; j < listFollows.length; j++){
                  if(listFollows[j].id != listFollowedBy[i].id){
-                    result += tableListTemplate(listFollows[i].id, listFollows[i].full_name, listFollows[i].profile_picture, "Não");   
+                    result += tableListTemplate(listFollows[i].id, listFollows[i].full_name, listFollows[i].profile_picture, "No");   
                  }
              }
          }
@@ -111,6 +112,7 @@ function createList(){
 
 //get user information
 function getProfile(){
+    var token = localStorage.getItem("iToken");
     $.ajax({
         method: "GET",
         url: "https://api.instagram.com/v1/users/self/?access_token="+token,
@@ -170,12 +172,12 @@ function unFollowUser(id){
  */
 //UI for the list of the users that do not follow the user
 function tableListTemplate(id, full_name, profile_picture, following){
-    var template = '<tr><td><img src="'+profile_picture+'" alt="profile"></td>'+
+    var template = '<tr class="animated fadeInUp"><td><img src="'+profile_picture+'" alt="profile"></td>'+
                     '<td>Flavio Amaral</td><td>'+following+'</td><td><button id="'+id+'" class="button btUnfollowUser" >Goodbye</button></td> </tr>';
     return template;                
 }
 
-
+//This template is true when is nothing in the table
 function emptyTableTemplate(){
     var template = '<div id="Goodbye" class="animated fadeInUp">'+
                         '<h4>It was a big list but had to be...</h4>'+  
@@ -185,7 +187,16 @@ function emptyTableTemplate(){
     return template;                
 }
 
-
+//Template for welcome page
+function welcomeTemplate(){
+    var template = '<div id="welcome" class="animated fadeInUp">'+
+                        '<h4>I tried...</h4>'+  
+                        '<p>I tried, I waited but received no reply so its time to say goodbye.'+ 
+                        '<br>Login to display the list of all those people who do not follow you back.</p>'+
+                        '<i class="fa fa-frown-o" aria-hidden="true"></i>'+
+                   '</div>';
+    return template;
+}
 
 
 

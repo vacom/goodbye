@@ -1,3 +1,7 @@
+body {
+  margin-bottom: 60px;
+}
+
 
 /*GLOBAL*/
 b{
@@ -50,4 +54,18 @@ nav h4{
 
 #resultsTable img{
     width: 50px;
+}
+
+.footer {
+  text-align: center;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  background-color: #fff;
+}
+
+.footer p{
+    margin-bottom: 0;
+    margin-top: 18px;
 }

@@ -1,13 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Vitor Amaral">
+    <link rel="shortcut icon" type='image/x-icon' href="favicon.ico"/>
     <title>Goodbye</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/milligram.min.css">
     <link rel="stylesheet" href="css/animate.css">
     <link rel="stylesheet" href="css/font-awesome.css">
+    <link rel="stylesheet" href="css/sweetalert2.min.css">
     <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
@@ -17,37 +23,29 @@
                 <div class="column"><h4>Goodbye</h4></div>
                 <div class="column">
                     <div class="nav-right">
-                        <ul class="list-menu">
-                            <li><b id="countFollowed_by">473</b> Seguidores</li>
-                            <li><b id="countFollows">622</b> A seguir</li>
+                        <ul class="list-menu animated fadeInUp">
+                            <li><b id="countFollowed_by">473</b> Followers</li>
+                            <li><b id="countFollows">622</b> Following</li>
                             <li><b><i class="fa fa-user" aria-hidden="true"></i></b> <span id="userFull_name">Vitor Amaral</span></li>
                             <li><a id="btLogout"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a> </li>
                         </ul>
-                        <button id="btlogin" class="button button-outline hide">Instagram Login</button>
+                        <button id="btlogin" class="button button-outline hide animated fadeInUp">Instagram Login</button>
                     </div>
                 </div>
             </div>
         </div>
     </nav>
-
     <div class="container">
         <div class="row">
             <div class="column">
                   <div id="app">
-                    <div id="welcome" class="animated fadeInUp">
-                        <h4>I tried...</h4>  
-                        <p>I tried, I waited but received no reply so it's time to say goodbye. 
-                        <br>Login to display the list of all those people who do not follow you back.</p>
-                        <i class="fa fa-frown-o" aria-hidden="true"></i>
-                    </div>
-
                     <table id="resultsTable" class="hide" class="animated fadeInUp">
                         <thead>
                             <tr>
-                                <th>Foto</th>
-                                <th>Nome</th>
-                                <th>A Seguir</th>
-                                <th>Ação</th>
+                                <th>Photo</th>
+                                <th>Name</th>
+                                <th>Following</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -58,9 +56,14 @@
         </div>
     </div>
 
-    
+     <footer class="footer">
+      <div class="container">
+        <p class="text-muted">Created with <i class="fa fa-heart" aria-hidden="true"></i> by  <a href="https://www.facebook.com/vacom.web" target="_blank">Vitor Amaral</a></p>
+      </div>
+    </footer>
     
     <script src="js/jquery-3.1.1.js"></script>
+    <script src="js/sweetalert2.min.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>
