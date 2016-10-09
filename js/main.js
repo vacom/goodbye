@@ -1,5 +1,5 @@
 init();
-var clientID = getClientID();;
+var clientID = getClientID();
 var redirect_uri = "http://www.vacom.me/goodbye";
 var url = "https://www.instagram.com/oauth/authorize/?client_id="+clientID+"&redirect_uri="+redirect_uri+"&response_type=token&scope=follower_list+relationships";
 
