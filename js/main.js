@@ -1,5 +1,5 @@
 init();
-var clientID = getClientID();
+var clientID = "26d997213b38471bbfc418bab493b6a3";
 var redirect_uri = "http://www.vacom.me/goodbye";
 var url = "https://www.instagram.com/oauth/authorize/?client_id="+clientID+"&redirect_uri="+redirect_uri+"&response_type=token&scope=follower_list+relationships";
 
@@ -198,12 +198,6 @@ function welcomeTemplate(){
     return template;
 }
 
-var getClientID = (function() {
-    var clientID = "26d997213b38471bbfc418bab493b6a3";
-	return function() {
-		return clientID;
-	};
-})();
 
 
 
